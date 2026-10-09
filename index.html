@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>民族学ノート | 世界のいろんな「ふつう」を学ぶ夏みたいな勉強サイト</title>
+<meta name="description" content="民族学を勉強する日々を記録するサイト。勉強ログ、マンガやイラスト、小さな小論文を置いています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mango: #ff8a1f;
+    --sunset: #ff5e00;
+    --palm: #17a34a;
+    --jungle: #0b5d34;
+    --lime: #c4f26b;
+    --bg: #f6ffe6;
+    --ink: #0b3b24;
+    --white: #ffffff;
+    --display: "Dela Gothic One", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+    --body: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", "Yu Gothic", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--body);
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 4px solid var(--sunset);
+    outline-offset: 3px;
+  }
+  .wrap { width: min(1080px, 100% - 40px); margin-inline: auto; }
+
+  /* ---------- header ---------- */
+  header.site {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--palm);
+    border-bottom: 4px solid var(--jungle);
+  }
+  header.site .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; flex-wrap: wrap; padding-block: 10px;
+  }
+  .logo {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: .04em;
+  }
+  nav ul { display: flex; gap: 10px; list-style: none; flex-wrap: wrap; }
+  nav a {
+    display: block;
+    padding: 4px 18px;
+    background: var(--white);
+    color: var(--jungle);
+    font-weight: 900;
+    text-decoration: none;
+    border: 3px solid var(--jungle);
+    border-radius: 999px;
+    box-shadow: 3px 3px 0 var(--jungle);
+    transition: transform .12s, box-shadow .12s;
+  }
+  nav a:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--jungle); }
+  nav a[aria-current="page"] { background: var(--mango); color: var(--white); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ffd9a0 0%, #ffb15c 55%, var(--mango) 100%);
+    padding: 72px 0 120px;
+  }
+  .sun {
+    position: absolute;
+    right: -60px; top: 20px;
+    width: min(460px, 70vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      repeating-linear-gradient(180deg, transparent 0 34px, rgba(255, 138, 31, .0) 34px 34px),
+      radial-gradient(circle at 35% 30%, #fff3b0, #ffd23f 55%, #ffb000);
+    box-shadow: 0 0 0 14px rgba(255, 255, 255, .35), 0 0 0 30px rgba(255, 255, 255, .2);
+  }
+  .palm {
+    position: absolute;
+    left: -30px; bottom: 40px;
+    width: min(340px, 60vw);
+    opacity: .95;
+  }
+  .hero .wrap { position: relative; z-index: 2; }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(3.6rem, 13vw, 8.4rem);
+    line-height: 1.05;
+    color: var(--white);
+    text-shadow: 5px 5px 0 var(--jungle), 10px 10px 0 var(--palm);
+    letter-spacing: .02em;
+  }
+  .hero .tagline {
+    margin-top: 28px;
+    max-width: 30em;
+    font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+    font-weight: 900;
+    color: var(--jungle);
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px; }
+  .btn {
+    display: inline-block;
+    padding: 10px 28px;
+    font-weight: 900;
+    font-size: 1.05rem;
+    text-decoration: none;
+    border: 4px solid var(--jungle);
+    border-radius: 999px;
+    box-shadow: 5px 5px 0 var(--jungle);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(3px, 3px); box-shadow: 2px 2px 0 var(--jungle); }
+  .btn.green { background: var(--palm); color: var(--white); }
+  .btn.white { background: var(--white); color: var(--jungle); }
+
+  .wave { position: absolute; left: 0; bottom: -1px; width: 100%; height: 70px; display: block; z-index: 1; }
+
+  /* ---------- ticker ---------- */
+  .ticker {
+    background: var(--jungle);
+    color: var(--lime);
+    border-block: 4px solid var(--palm);
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: var(--display);
+    font-size: 1.15rem;
+    padding: 8px 0;
+  }
+  .ticker-track { display: inline-block; padding-left: 100%; animation: slide 38s linear infinite; }
+  .ticker span::after { content: "🌺"; margin-inline: 1.2em; font-size: .9em; }
+  @keyframes slide { to { transform: translateX(-100%); } }
+
+  /* ---------- sections ---------- */
+  section { padding: 76px 0 40px; }
+  h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+    line-height: 1.3;
+    color: var(--jungle);
+    display: inline-block;
+    padding-bottom: 6px;
+    background: linear-gradient(90deg, var(--mango), var(--mango)) left bottom / 100% 10px no-repeat;
+  }
+  .lead { margin-top: 18px; max-width: 38em; font-size: 1.08rem; }
+
+  /* about ethnology */
+  .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 36px; }
+  .topic {
+    padding: 26px 24px 28px;
+    border: 4px solid var(--jungle);
+    border-radius: 28px;
+    box-shadow: 7px 7px 0 var(--jungle);
+  }
+  .topic:nth-child(1) { background: #ffe0b8; border-radius: 28px 28px 80px 28px; }
+  .topic:nth-child(2) { background: var(--lime); border-radius: 28px 80px 28px 28px; }
+  .topic:nth-child(3) { background: #ffd0a0; border-radius: 80px 28px 28px 28px; }
+  .topic .emoji { font-size: 2.4rem; line-height: 1; }
+  .topic h3 { font-family: var(--display); font-weight: 400; font-size: 1.4rem; margin: 10px 0 6px; }
+  .topic p { font-size: .98rem; }
+
+  /* blog preview: tweet style */
+  .log-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 34px; max-width: 700px; }
+  .tweet {
+    display: grid; grid-template-columns: 54px 1fr; gap: 14px;
+    padding: 18px 20px;
+    background: var(--white);
+    border: 3px solid var(--palm);
+    border-radius: 22px;
+  }
+  .avatar {
+    width: 54px; height: 54px; border-radius: 50%;
+    background: var(--mango);
+    border: 3px solid var(--jungle);
+    display: grid; place-items: center;
+    font-family: var(--display); color: var(--white); font-size: 1.2rem;
+  }
+  .tweet .who { font-weight: 900; }
+  .tweet time { font-size: .86rem; color: var(--palm); font-weight: 700; margin-left: 8px; }
+  .tweet p { margin-top: 2px; font-size: 1rem; }
+  .more { margin-top: 26px; }
+
+  /* column preview */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 36px; }
+  .card {
+    display: flex; flex-direction: column;
+    background: var(--white);
+    border: 4px solid var(--jungle);
+    border-radius: 24px;
+    overflow: hidden;
+    text-decoration: none;
+    box-shadow: 7px 7px 0 var(--mango);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .card:hover { transform: translate(3px, 3px); box-shadow: 4px 4px 0 var(--mango); }
+  .thumb { height: 150px; display: grid; place-items: center; border-bottom: 4px solid var(--jungle); }
+  .thumb.t1 { background: var(--lime); }
+  .thumb.t2 { background: var(--mango); }
+  .thumb.t3 { background: #bdf0cf; }
+  .card .body { padding: 18px 20px 22px; }
+  .tag {
+    display: inline-block; padding: 0 12px;
+    font-size: .82rem; font-weight: 900;
+    background: var(--palm); color: var(--white);
+    border-radius: 999px; margin-bottom: 6px;
+  }
+  .card h3 { font-family: var(--display); font-weight: 400; font-size: 1.2rem; line-height: 1.5; }
+  .card p { font-size: .94rem; margin-top: 4px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    margin-top: 90px;
+    background: var(--palm);
+    border-top: 6px solid var(--jungle);
+    color: var(--white);
+    padding: 40px 0 30px;
+    text-align: center;
+  }
+  footer .logo { font-size: 1.6rem; }
+  footer ul { list-style: none; display: flex; justify-content: center; gap: 22px; margin: 14px 0; flex-wrap: wrap; font-weight: 900; }
+  footer a { text-decoration: underline; text-underline-offset: 4px; }
+  footer small { display: block; opacity: .9; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 820px) {
+    .three, .cards { grid-template-columns: 1fr; }
+    .hero { padding: 48px 0 100px; }
+    .sun { top: -30px; right: -90px; opacity: .85; }
+    section { padding-top: 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; padding-left: 0; }
+    html { scroll-behavior: auto; }
+    nav a, .btn, .card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="index.html">民族学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html" aria-current="page">ホーム</a></li>
+        <li><a href="blog.html">勉強ログ</a></li>
+        <li><a href="column.html">コラム</a></li>
+        <li><a href="about.html">about</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="sun" aria-hidden="true"></div>
+
+    <svg class="palm" viewBox="0 0 340 300" aria-hidden="true">
+      <path d="M40 300 C60 220 90 160 130 110" stroke="#0b5d34" stroke-width="14" fill="none" stroke-linecap="round"/>
+      <path d="M130 110 C80 60 30 70 0 110 C50 90 90 95 130 110Z" fill="#17a34a" stroke="#0b5d34" stroke-width="5"/>
+      <path d="M130 110 C120 50 150 10 200 0 C180 40 160 75 130 110Z" fill="#17a34a" stroke="#0b5d34" stroke-width="5"/>
+      <path d="M130 110 C190 70 250 80 290 130 C230 105 180 100 130 110Z" fill="#0b5d34" stroke="#0b5d34" stroke-width="5"/>
+      <path d="M130 110 C150 140 150 190 130 230 C110 190 115 150 130 110Z" fill="#17a34a" stroke="#0b5d34" stroke-width="5"/>
+    </svg>
+
+    <div class="wrap">
+      <h1>民族学<br>ノート</h1>
+      <p class="tagline">世界のいろんな「ふつう」を、夏みたいにまぶしく学ぶ。<br>勉強の記録と、マンガ・イラスト・小さな小論文の置き場です。</p>
+      <div class="cta-row">
+        <a class="btn green" href="blog.html">勉強ログを見る</a>
+        <a class="btn white" href="column.html">コラムを読む</a>
+      </div>
+    </div>
+
+    <svg class="wave" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 35 Q 50 0 100 35 T 200 35 T 300 35 T 400 35 T 500 35 T 600 35 T 700 35 T 800 35 T 900 35 T 1000 35 T 1100 35 T 1200 35 V70 H0Z" fill="#0b5d34"/>
+    </svg>
+  </div>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>アイヌ</span><span>琉球</span><span>マオリ</span><span>サーミ</span><span>ケチュア</span><span>ベルベル</span><span>ナバホ</span><span>ポリネシア</span><span>アイヌ</span><span>琉球</span><span>マオリ</span><span>サーミ</span>
+    </div>
+  </div>
+
+  <section id="what">
+    <div class="wrap">
+      <h2>民族学ってなに？</h2>
+      <p class="lead">ひとつの集団のくらし、ことば、信じていること、お祭りの意味。それぞれの「ふつう」がどうやって生まれたのかを、じっくり見て、聞いて、考える学問です。このサイトでは、りっちゃんが学んだことをゆるく記録していきます。</p>
+
+      <div class="three">
+        <div class="topic">
+          <div class="emoji" aria-hidden="true">🍍</div>
+          <h3>くらし</h3>
+          <p>食べもの、住まい、仕事。毎日のあたりまえには、その土地ならではの知恵がつまっています。</p>
+        </div>
+        <div class="topic">
+          <div class="emoji" aria-hidden="true">🌴</div>
+          <h3>ことば</h3>
+          <p>呼び方や言いまわしには、ものの見かたが映ります。ことばから文化をのぞいてみます。</p>
+        </div>
+        <div class="topic">
+          <div class="emoji" aria-hidden="true">🌺</div>
+          <h3>おまつり</h3>
+          <p>踊り、歌、衣装。人が集まって祝う理由を知ると、その社会の大事なものが見えてきます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="log">
+    <div class="wrap">
+      <h2>さいきんの勉強ログ</h2>
+      <div class="log-grid">
+        <article class="tweet">
+          <div class="avatar" aria-hidden="true">り</div>
+          <div>
+            <span class="who">りっちゃん</span><time datetime="2026-10-08">2026.10.08</time>
+            <p>民族学の勉強スタート！まずは「民族」ってそもそも何？から。同じことばを話す人たち？同じ文化？ 境界線はけっこうあいまいらしい。</p>
+          </div>
+        </article>
+        <article class="tweet">
+          <div class="avatar" aria-hidden="true">り</div>
+          <div>
+            <span class="who">りっちゃん</span><time datetime="2026-10-05">2026.10.05</time>
+            <p>フィールドワークの本を借りてきた。現地に住み込んで観察するの、楽しそうだけど体力いりそう。</p>
+          </div>
+        </article>
+        <article class="tweet">
+          <div class="avatar" aria-hidden="true">り</div>
+          <div>
+            <span class="who">りっちゃん</span><time datetime="2026-10-02">2026.10.02</time>
+            <p>ethnography は「民族誌」。単語をひとつ覚えると、本のタイトルがちょっと読めるようになって嬉しい。</p>
+          </div>
+        </article>
+      </div>
+      <p class="more"><a class="btn green" href="blog.html">ログをもっと見る</a></p>
+    </div>
+  </section>
+
+  <section id="column">
+    <div class="wrap">
+      <h2>コラム</h2>
+      <p class="lead">民族学にちなんだ4コマ、イラスト、そして短い小論文。勉強したことを、絵と文章で楽しく広げていきます。</p>
+
+      <div class="cards">
+        <a class="card" href="column.html">
+          <div class="thumb t1" aria-hidden="true">
+            <svg width="110" height="110" viewBox="0 0 110 110">
+              <rect x="6" y="6" width="45" height="45" rx="6" fill="#fff" stroke="#0b5d34" stroke-width="4"/>
+              <rect x="59" y="6" width="45" height="45" rx="6" fill="#fff" stroke="#0b5d34" stroke-width="4"/>
+              <rect x="6" y="59" width="45" height="45" rx="6" fill="#fff" stroke="#0b5d34" stroke-width="4"/>
+              <rect x="59" y="59" width="45" height="45" rx="6" fill="#ff8a1f" stroke="#0b5d34" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">4コマ</span>
+            <h3>はじめてのフィールドワーク</h3>
+            <p>ノートを片手に出かけたら、予想外のことばかり。</p>
+          </div>
+        </a>
+        <a class="card" href="column.html">
+          <div class="thumb t2" aria-hidden="true">
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="16" fill="#ffd23f" stroke="#0b5d34" stroke-width="4"/>
+              <g fill="#17a34a" stroke="#0b5d34" stroke-width="4">
+                <ellipse cx="60" cy="24" rx="14" ry="20"/>
+                <ellipse cx="60" cy="96" rx="14" ry="20"/>
+                <ellipse cx="24" cy="60" rx="20" ry="14"/>
+                <ellipse cx="96" cy="60" rx="20" ry="14"/>
+              </g>
+              <circle cx="60" cy="60" r="12" fill="#fff3b0" stroke="#0b5d34" stroke-width="4"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">イラスト</span>
+            <h3>世界のおまつりずかん</h3>
+            <p>衣装や飾りを描きながら、意味を調べていくシリーズ。</p>
+          </div>
+        </a>
+        <a class="card" href="column.html">
+          <div class="thumb t3" aria-hidden="true">
+            <svg width="110" height="110" viewBox="0 0 110 110">
+              <rect x="14" y="8" width="82" height="94" rx="8" fill="#fff" stroke="#0b5d34" stroke-width="4"/>
+              <path d="M28 30 H82 M28 48 H82 M28 66 H82 M28 84 H60" stroke="#17a34a" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="body">
+            <span class="tag">小論文</span>
+            <h3>「ふつう」ってだれが決めるの？</h3>
+            <p>身近な例から、文化の「あたりまえ」を考えてみる短い文章。</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="index.html">民族学ノート</a>
+    <ul>
+      <li><a href="blog.html">勉強ログ</a></li>
+      <li><a href="column.html">コラム</a></li>
+      <li><a href="about.html">about</a></li>
+    </ul>
+    <small>&copy; 2026 Azalea Creative Room</small>
+  </div>
+</footer>
+
+</body>
+</html>
